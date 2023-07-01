@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <style>
+    /* Reset default styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Body styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    /* Sidebar styles */
+    aside {
+      background-color: #2c82b9; /* Change sidebar background color here */
+      color: #fff;
+      width: 200px;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+    }
+
+    aside ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    aside ul li {
+      margin-bottom: 10px;
+    }
+
+    aside ul li a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+    }
+
+    aside ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Content styles */
+    .content {
+      padding: 20px;
+      margin-left: 220px; /* Adjust margin to create space between sidebar and content */
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+  <script>
+    // Function to update content when a sidebar item is clicked
+    function updateContent(content) {
+      var contentElement = document.getElementById("content");
+      contentElement.innerText = content;
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Admin Panel</h1>
+  </header>
+  <aside style="margin-top: 65px;">
+    <ul>
+      <li><a href="#" onclick="updateContent('Dashboard')">Dashboard</a></li>
+      <li><a href="#" onclick="updateContent('User Management\n\nObjectives:\n- Manage user accounts and permissions\n- Add, edit, and delete users\n- Assign roles and access levels')">User Management</a></li>
+      <li><a href="#" onclick="updateContent('Device Management\n\nObjectives:\n- Manage devices in the supply chain\n- Register, update, and deactivate devices\n- Track device information and status')">Device Management</a></li>
+      <li><a href="#" onclick="updateContent('Chaincode Management\n\nObjectives:\n- Deploy and upgrade chaincode\n- Manage chaincode versions\n- Monitor chaincode performance and logs')">Chaincode Management</a></li>
+      <li><a href="#" onclick="updateContent('Oracle Integration\n\nObjectives:\n- Integrate external data from oracles\n- Configure and manage oracle services\n- Handle data feeds and validations')">Oracle Integration</a></li>
+      <li><a href="#" onclick="updateContent('Transaction Monitoring\n\nObjectives:\n- Monitor and track transactions\n- View transaction history and details\n- Analyze transaction performance')">Transaction Monitoring</a></li>
+      <li><a href="#" onclick="updateContent('Notifications and Alerts\n\nObjectives:\n- Manage notifications and alerts\n- Configure notification settings\n- Monitor system alerts and events')">Notifications and Alerts</a></li>
+      <li><a href="#" onclick="updateContent('Documentation and Help\n\nObjectives:\n- Access project documentation\n- View user guides and tutorials\n- Get support and assistance')">Documentation and Help</a></li>
+      <li><a href="#" onclick="updateContent('Data Visualization\n\nObjectives:\n- Visualize and analyze data\n- Create charts and graphs\n- Generate data reports')">Data Visualization</a></li>
+    </ul>
+  </aside>
+  <div class="content">
+    <div id="content">
+      <p>Welcome to the admin panel. This is the dashboard section.</p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2023. All rights reserved.</p>
+  </footer>
+</body>
+</html>
