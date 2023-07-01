@@ -1,116 +1,270 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Admin Panel</title>
-  <style>
-    /* Reset default styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <head>
+    <title>Admin Panel</title>
+    <style>
+      /* Reset default styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    /* Body styles */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
+      /* Body styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
 
-    /* Header styles */
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
+      /* Header styles */
+      header {
+        position: sticky;
+        top: 0;
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        z-index: 100;
+      }
 
-    h1 {
-      margin: 0;
-      font-size: 24px;
-    }
+      h1 {
+        margin: 0;
+        font-size: 24px;
+      }
 
-    /* Sidebar styles */
-    aside {
-      background-color: #2c82b9; /* Change sidebar background color here */
-      color: #fff;
-      width: 200px;
-      padding: 20px;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-    }
+      /* Sidebar styles */
+      aside {
+        background-color: #2c82b9; /* Change sidebar background color here */
+        color: #fff;
+        width: 200px;
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+      }
 
-    aside ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
+      aside ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
 
-    aside ul li {
-      margin-bottom: 10px;
-    }
+      aside ul li {
+        margin-bottom: 10px;
+      }
 
-    aside ul li a {
-      text-decoration: none;
-      color: #fff;
-      display: block;
-    }
+      aside ul li a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+      }
 
-    aside ul li a:hover {
-      text-decoration: underline;
-    }
+      aside ul li a:hover {
+        text-decoration: underline;
+      }
 
-    /* Content styles */
-    .content {
-      padding: 20px;
-      margin-left: 220px; /* Adjust margin to create space between sidebar and content */
-    }
+      /* Content styles */
+      .content {
+        padding: 20px;
+        margin-left: 220px; /* Adjust margin to create space between sidebar and content */
+      }
 
-    /* Footer styles */
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
-  <script>
-    // Function to update content when a sidebar item is clicked
-    function updateContent(content) {
-      var contentElement = document.getElementById("content");
-      contentElement.innerText = content;
-    }
-  </script>
-</head>
-<body>
-  <header>
-    <h1>Admin Panel</h1>
-  </header>
-  <aside style="margin-top: 65px;">
-    <ul>
-      <li><a href="#" onclick="updateContent('Dashboard')">Dashboard</a></li>
-      <li><a href="#" onclick="updateContent('User Management\n\nObjectives:\n- Manage user accounts and permissions\n- Add, edit, and delete users\n- Assign roles and access levels')">User Management</a></li>
-      <li><a href="#" onclick="updateContent('Device Management\n\nObjectives:\n- Manage devices in the supply chain\n- Register, update, and deactivate devices\n- Track device information and status')">Device Management</a></li>
-      <li><a href="#" onclick="updateContent('Chaincode Management\n\nObjectives:\n- Deploy and upgrade chaincode\n- Manage chaincode versions\n- Monitor chaincode performance and logs')">Chaincode Management</a></li>
-      <li><a href="#" onclick="updateContent('Oracle Integration\n\nObjectives:\n- Integrate external data from oracles\n- Configure and manage oracle services\n- Handle data feeds and validations')">Oracle Integration</a></li>
-      <li><a href="#" onclick="updateContent('Transaction Monitoring\n\nObjectives:\n- Monitor and track transactions\n- View transaction history and details\n- Analyze transaction performance')">Transaction Monitoring</a></li>
-      <li><a href="#" onclick="updateContent('Notifications and Alerts\n\nObjectives:\n- Manage notifications and alerts\n- Configure notification settings\n- Monitor system alerts and events')">Notifications and Alerts</a></li>
-      <li><a href="#" onclick="updateContent('Documentation and Help\n\nObjectives:\n- Access project documentation\n- View user guides and tutorials\n- Get support and assistance')">Documentation and Help</a></li>
-      <li><a href="#" onclick="updateContent('Data Visualization\n\nObjectives:\n- Visualize and analyze data\n- Create charts and graphs\n- Generate data reports')">Data Visualization</a></li>
-    </ul>
-  </aside>
-  <div class="content">
-    <div id="content">
-      <p>Welcome to the admin panel. This is the dashboard section.</p>
+      /* Footer styles */
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .dashboard-section {
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-top: 0;
+      }
+    </style>
+    <script>
+      // Function to update content when a sidebar item is clicked
+      function updateContent(content) {
+        var contentElement = document.getElementById("content");
+        contentElement.innerText = content;
+      }
+    </script>
+  </head>
+  <body>
+    <header style="position: sticky">
+      <h1>Admin Panel</h1>
+    </header>
+    <aside style="margin-top: 65px">
+      <ul>
+        <li><a href="adminpanel.html">Dashboard</a></li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('User Management\n\nObjectives:\n- Manage user accounts and permissions\n- Add, edit, and delete users\n- Assign roles and access levels')"
+            >User Management</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Device Management\n\nObjectives:\n- Manage devices in the supply chain\n- Register, update, and deactivate devices\n- Track device information and status')"
+            >Device Management</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Chaincode Management\n\nObjectives:\n- Deploy and upgrade chaincode\n- Manage chaincode versions\n- Monitor chaincode performance and logs')"
+            >Chaincode Management</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Oracle Integration\n\nObjectives:\n- Integrate external data from oracles\n- Configure and manage oracle services\n- Handle data feeds and validations')"
+            >Oracle Integration</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Transaction Monitoring\n\nObjectives:\n- Monitor and track transactions\n- View transaction history and details\n- Analyze transaction performance')"
+            >Transaction Monitoring</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Notifications and Alerts\n\nObjectives:\n- Manage notifications and alerts\n- Configure notification settings\n- Monitor system alerts and events')"
+            >Notifications and Alerts</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Documentation and Help\n\nObjectives:\n- Access project documentation\n- View user guides and tutorials\n- Get support and assistance')"
+            >Documentation and Help</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            onclick="updateContent('Data Visualization\n\nObjectives:\n- Visualize and analyze data\n- Create charts and graphs\n- Generate data reports')"
+            >Data Visualization</a
+          >
+        </li>
+      </ul>
+    </aside>
+    <div class="content">
+      <div id="content">
+        <p>Welcome to the admin panel. This is the dashboard section.</p>
+        <h1>Admin Dashboard</h1>
+
+        <div class="dashboard-section">
+          <h2>Total Users</h2>
+          <p>Display the total number of users registered in the system.</p>
+          <div id="total-users"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>Active Users</h2>
+          <p>
+            Show the number of currently active users who are actively using the
+            system.
+          </p>
+          <div id="active-users"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>Recent Registrations</h2>
+          <p>
+            Show a list of the most recent user registrations, including their
+            names and registration dates.
+          </p>
+          <div id="recent-registrations"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>Device Status</h2>
+          <p>
+            Provide an overview of the status of devices in the supply chain,
+            indicating the number of active, inactive, and malfunctioning
+            devices.
+          </p>
+          <div id="device-status"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>Chaincode Performance</h2>
+          <p>
+            Display key performance metrics related to the deployed chaincode,
+            such as transaction throughput, average response time, and success
+            rate.
+          </p>
+          <div id="chaincode-performance"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>Oracle Integration Status</h2>
+          <p>
+            Show the status of the integration with external oracles, indicating
+            whether the data feeds and validations are functioning properly.
+          </p>
+          <div id="oracle-integration-status"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>System Alerts</h2>
+          <p>
+            Notify about any critical system alerts or events that require
+            immediate attention, such as server downtime or data synchronization
+            issues.
+          </p>
+          <div id="system-alerts"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>Transaction History</h2>
+          <p>
+            Display a log of recent transactions, including details like
+            transaction IDs, timestamps, and involved parties.
+          </p>
+          <div id="transaction-history"></div>
+        </div>
+
+        <div class="dashboard-section">
+          <h2>User Activity</h2>
+          <p>
+            Provide insights into user activity and engagement, such as the most
+            active users, popular features, or frequent actions.
+          </p>
+          <div id="user-activity"></div>
+        </div>
+      </div>
     </div>
-  </div>
-  <footer>
-    <p>&copy; 2023. All rights reserved.</p>
-  </footer>
-</body>
+    <footer>
+      <p>&copy; 2023. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
